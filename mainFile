@@ -1,0 +1,27 @@
+0011 0000 0000 0000   ; program's starting address (x3000)
+1010 000 0 0100 1111  ; LDI R0 <-- X3050
+0101 000 000 1 0 1111 ; AND R0 <-- ASCII value + mask = integer (at x3001)
+1011 000 0 0100 1101  ; STI x3050 <-- R0 <-- integer (at x3002)
+
+1010 001 0 0100 1101  ; LDI R1 <-- x3051 (at x3003)
+0101 001 001 1 0 1111 ; AND R1 <-- ASCII value + mask = integer (at x3004)
+1011 001 0 0100 1011  ; STI x3051 <-- R1 <-- integer (at x3005)
+
+1010 010 0 0100 1011  ; LDI R2 <-- x3052 (at x3006)
+0101 010 010 1 0 1111 ; AND R2 <-- ASCII value + mask = integer (at x3007)
+1011 010 0 0100 1001  ; STI x3052 <-- R2 <-- integer (at x3008)
+ 
+1010 011 0 0100 1001  ; LDI R3 <-- x3053 (at x3009)
+0101 011 011 1 0 1111 ; AND R3 <-- ASCII value + mask = integer (at x300A)
+1011 011 0 0100 0111  ; STI x3053 <-- R3 <-- integer (at x300B)
+ 
+1010 100 0 0100 0111  ; LDI R4 <-- x3054 (at x300C)
+0101 100 100 1 0 1111 ; AND R4 <-- ASCII value + mask = integer (at x300D)
+1011 100 0 0100 0101  ; STI x3054 <-- R4 <-- integer (at x300E)
+ 
+0001 101 000 0 00 001 ; ADD R5 <-- R0 + R1 (at x300F)
+0001 110 010 0 00 011 ; ADD R6 <-- R2 + R3 (at x3010)
+0001 111 101 0 00 110 ; ADD R7 <-- R5 + R6 (at x3011)
+0001 101 100 0 00 111 ; ADD R5 <-- R4 + R7 (at x3012)
+ 
+1011 101 0 0100 0001  ; STI x3055 <-- R5 (at x3013)
